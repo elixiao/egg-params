@@ -20,10 +20,6 @@
 [download-image]: https://img.shields.io/npm/dm/egg-params.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-params
 
-<!--
-Description here.
--->
-
 ## Install
 
 ```bash
@@ -44,19 +40,23 @@ exports.params = {
 
 ```js
 // {app_root}/config/config.default.js
-exports.params = {
-};
+exports.middleware = ['before', 'params', 'after']
 ```
 
 see [config/config.default.js](config/config.default.js) for more detail.
 
 ## Example
 
-<!-- example here -->
+```js
+async find() {
+  const { ctx } = this
+  ctx.body = await ctx.service.account.find(ctx.params)
+}
+```
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/eggjs/egg/issues).
+Please open an issue [here](https://github.com/keliq/egg-params/issues).
 
 ## License
 
